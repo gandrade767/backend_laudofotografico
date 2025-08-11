@@ -1,5 +1,5 @@
 const express = require('express');
-const { validate } = require('../../middleware/validate.js');
+const { validate } = require('../../middlewares/validate.js');
 const {
   createEmpresaSchema,
   updateEmpresaSchema,
