@@ -1,2 +1,25 @@
-# Google App Engine generated folder
-appengine-generated/
+# Dependências
+node_modules/
+
+# Variáveis de ambiente
+.env
+.env.*.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# Builds/coverage
+dist/
+build/
+coverage/
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
