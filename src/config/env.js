@@ -1,3 +1,4 @@
+// src/config/env.js
 require('dotenv').config();
 const { z } = require('zod');
 
@@ -9,7 +10,11 @@ const schema = z.object({
   PGDATABASE: z.string(),
   PGUSER: z.string(),
   PGPASSWORD: z.string(),
-  PGSSLMODE: z.enum(['disable', 'require']).default('disable')
+  PGSSLMODE: z.enum(['disable', 'require']).default('disable'),
+
+  // 👇 adicionar JWT no schema
+  JWT_SECRET: z.string().min(16, 'Locar123gress123'),
+  JWT_EXPIRES_IN: z.string().default('1h')
 });
 
 const parsed = schema.safeParse(process.env);
