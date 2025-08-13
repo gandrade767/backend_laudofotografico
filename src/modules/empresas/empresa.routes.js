@@ -1,5 +1,7 @@
 const express = require('express');
 const { validate } = require('../../middlewares/validate.js');
+const { requireAuth } = require('../../middlewares/auth');
+const { requireRole } = require('../../middlewares/rbac');
 const {
   createEmpresaSchema,
   updateEmpresaSchema,
@@ -18,6 +20,8 @@ const router = express.Router();
 
 router.post(
   '/',
+  requireAuth,
+  requireRole(['superadmin']), // ✅ só superadmin cria empresa
   validate({ body: createEmpresaSchema }),
   createEmpresa
 );
