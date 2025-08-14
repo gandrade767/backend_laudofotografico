@@ -10,6 +10,6 @@ const base = {
 };
 
 const createUserBySuperadmin = z.object({ ...base, empresa_id: z.coerce.number().int().positive() });
-const createUserByAdmin      = z.object({ ...base }).omit({ empresa_id: true }).extend({ role: z.literal('admin', 'usuario') });
+const createUserByAdmin      = z.object({ ...base }).omit({ empresa_id: true }).extend({ role: z.enum('admin', 'usuario').default('usuario') });
 
 module.exports = { createUserBySuperadmin, createUserByAdmin};
