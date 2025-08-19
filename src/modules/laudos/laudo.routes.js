@@ -2,12 +2,12 @@ const express = require('express');
 const { validate } = require('../../middlewares/validate');
 const { requireAuth } = require('../../middlewares/auth');
 const { requireRole } = require('../../middlewares/rbac');
-const { createLaudo, listLaudoQuerySchema, idParamSchema, createLaudoSchema } = require('./laudo.schema');
+const { createLaudoSchema, listLaudosQuerySchema, idParamSchema } = require('./laudo.schema');
 const { createLaudo, listLaudos, getLaudo } = require('./laudo.controller');
 
 const router = express.Router();
 
-//apenas admin/usuario
+// apenas admin/usuario
 router.post('/', requireAuth, requireRole(['admin','usuario']),
   validate({ body: createLaudoSchema }), createLaudo);
 
